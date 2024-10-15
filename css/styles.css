@@ -210,7 +210,7 @@
     margin-bottom: 30px;
 }
 
-/*!-------------MAIN - CARRITO------------------------------------------------------------------------------------------------------------*/
+/*!-------------CARRITO------------------------------------------------------------------------------------------------------------*/
 main {
     padding: 50px 20px;
     background-color: #f3f3f3;
@@ -234,13 +234,35 @@ main {
 }
 
 /* Estilos para la lista de productos del carrito */
-#lista-carrito {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+.carrito-detalles{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 10px;
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
+}
+.carrito-lista{
+    display: flex;
+    justify-content: space-between;
+}
+.boton-eliminar {
+    align-items:end;
+    border: none;
+    font-size: large;
+}
+.carrito-lista p{
+    padding: 20px;
+    margin: 0px;
 }
 
-#lista-carrito li {
+.carrito-items {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.carrito-items li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -248,7 +270,7 @@ main {
     border-bottom: 1px solid #e0e0e0;
 }
 
-#lista-carrito li button {
+.carrito-items li button {
     background-color: #ff4c4c;
     color: white;
     border: none;
@@ -258,7 +280,7 @@ main {
     transition: background-color 0.3s ease;
 }
 
-#lista-carrito li button:hover {
+.carrito-items li button:hover {
     background-color: #ff1f1f;
 }
 
@@ -271,7 +293,7 @@ main {
 }
 
 /* Botón para vaciar carrito */
-#vaciar-carrito {
+.vaciar {
     width: 100%;
     padding: 10px;
     background-color: #838383;
@@ -283,6 +305,6 @@ main {
     transition: background-color 0.3s ease;
 }
 
-#vaciar-carrito:hover {
+.vaciar:hover {
     background-color: #575757;
 }

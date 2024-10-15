@@ -74,10 +74,14 @@ function mostrarProductosEnCarrito() {
                 let item = document.createElement('div');
                 item.classList.add("carrito-item");
                 item.innerHTML = `
-                    <img src="${producto.imagen}" alt="${producto.nombre}" class="carrito-imagen">
                     <div class="carrito-detalles">
-                        <p>${producto.nombre}</p>
-                        <p>$${producto.precio.toFixed(2)}</p>
+                        <div class="carrito-lista">
+                            <p>${producto.nombre}</p>
+                            <p>$${producto.precio.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <button>✖️</button>
+                        </div>
                     </div>
                 `;
                 carritoContainer.appendChild(item);
@@ -107,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
             agregarAlCarrito(productos[index].id);
         });
     });
-
+    
     let botonVaciarCarrito = document.getElementById("vaciar-carrito");
     if (botonVaciarCarrito) {
         botonVaciarCarrito.addEventListener("click", () => {
