@@ -1,4 +1,3 @@
-
 let carrito = [];
 
 let productos = [
@@ -51,17 +50,19 @@ function agregarAlCarrito(productoId) {
     }
 }
 
+function eliminarDelCarrito(productoId) {
+    carrito = carrito.filter(item => item.id !== productoId);
+    actualizarCarrito();
+}
 
 function calcularTotal() {
     return carrito.reduce((total, producto) => total + producto.precio, 0);
 }
 
-
 function actualizarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
     mostrarProductosEnCarrito();
 }
-
 
 function mostrarProductosEnCarrito() {
     let carritoContainer = document.querySelector(".carrito-items");
@@ -80,11 +81,16 @@ function mostrarProductosEnCarrito() {
                             <p>$${producto.precio.toFixed(2)}</p>
                         </div>
                         <div>
-                            <button>✖️</button>
+                            <button class="boton-eliminar" data-id="${producto.id}">✖️</button>
                         </div>
                     </div>
                 `;
                 carritoContainer.appendChild(item);
+                // Agregar el evento de eliminar al botón
+                let botonEliminar = item.querySelector('.boton-eliminar');
+                botonEliminar.addEventListener('click', () => {
+                    eliminarDelCarrito(producto.id);
+                });
             }
         });
         let total = calcularTotal();
