@@ -39,6 +39,22 @@ let productos = [
     }
 ];
 
+function tostify (){
+    Toastify({
+        text: "Producto Agregado!",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} 
+    }).showToast();
+}
 function agregarAlCarrito(productoId) {
     let producto = productos.find(p => p.id === productoId);
     if (producto) {
@@ -50,6 +66,7 @@ function agregarAlCarrito(productoId) {
             // Si no está, agregar el producto con cantidad 1
             carrito.push({...producto, cantidad: 1});
         }
+        tostify ()
         actualizarCarrito();
     }
 }
