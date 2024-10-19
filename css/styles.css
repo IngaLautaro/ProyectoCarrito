@@ -79,7 +79,7 @@
 .tarjeta-producto:hover {
     transform: translateY(-5px);
 }
-.carrito-imagen{
+.carrito-imagen {
     width: 100%;
     height: 200px;
     object-fit: contain;
@@ -233,29 +233,7 @@ main {
     color: #333;
 }
 
-/* Estilos para la lista de productos del carrito */
-.carrito-detalles{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin: 10px;
-    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
-}
-.carrito-lista{
-    display: flex;
-    justify-content: space-between;
-}
-.boton-eliminar {
-    align-items:end;
-    border: none;
-    font-size: large;
-}
-.carrito-lista p{
-    padding: 20px;
-    margin: 0px;
-}
-
+/* Estilo para la lista de productos del carrito */
 .carrito-items {
     list-style: none;
     padding: 0;
@@ -270,26 +248,51 @@ main {
     border-bottom: 1px solid #e0e0e0;
 }
 
-.carrito-items li button {
-    background-color: #ff4c4c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Estilo para el contenedor de detalles del producto */
+.carrito-detalles {
+    display: flex;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+    width: 100%; /* Asegura que ocupa todo el ancho del contenedor */
 }
 
-.carrito-items li button:hover {
-    background-color: #ff1f1f;
+/* Estilo para la lista de productos */
+.carrito-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea todos los elementos dentro */
+    width: 100%; /* Asegura que ocupa todo el ancho */
 }
 
-#total {
-    font-size: 1.5em;
-    color: #00a650;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
+/* Estilo para el texto de nombre, precio y cantidad */
+.carrito-lista p {
+    margin: 0;
+    padding: 10px; /* Añadir espacio entre los textos y el borde */
+    min-width: 150px; /* Ancho mínimo para el nombre y el precio */
+}
+
+/* Estilo específico para el nombre y precio */
+.carrito-nombre {
+    min-width: 200px; /* Ancho fijo para el nombre del producto */
+    flex-shrink: 0; /* No se encoge */
+}
+
+.carrito-precio {
+    min-width: 100px; /* Ancho fijo para el precio */
+    flex-shrink: 0; /* No se encoge */
+}
+
+/* Estilo para el botón de eliminar */
+.boton-eliminar {
+    background: none; /* Eliminar el fondo */
+    border: none; /* Eliminar borde */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+    font-size: large; /* Ajustar tamaño de la fuente */
+    padding: 10px; /* Espacio alrededor del botón */
+}
+
+/* Agregar un hover efecto al botón de eliminar */
+.boton-eliminar:hover {
+    color: red; /* Cambiar color cuando se pasa el mouse */
 }
 
 /* Botón para vaciar carrito */

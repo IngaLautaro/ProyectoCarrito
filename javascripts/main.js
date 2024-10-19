@@ -42,21 +42,35 @@ let productos = [
 function agregarAlCarrito(productoId) {
     let producto = productos.find(p => p.id === productoId);
     if (producto) {
-        let existe = carrito.some(item => item.id === producto.id);
-        if (!existe) {
-            carrito.push(producto);
+        let itemEnCarrito = carrito.find(item => item.id === producto.id);
+        if (itemEnCarrito) {
+            // Si el producto ya está en el carrito, incrementar la cantidad
+            itemEnCarrito.cantidad++;
+        } else {
+            // Si no está, agregar el producto con cantidad 1
+            carrito.push({...producto, cantidad: 1});
         }
         actualizarCarrito();
     }
 }
 
 function eliminarDelCarrito(productoId) {
-    carrito = carrito.filter(item => item.id !== productoId);
-    actualizarCarrito();
+    let productoIndex = carrito.findIndex(item => item.id === productoId);
+    if (productoIndex !== -1) {
+        // Disminuir la cantidad del producto
+        carrito[productoIndex].cantidad--;
+
+        // Si la cantidad llega a 0, eliminar el producto del carrito
+        if (carrito[productoIndex].cantidad <= 0) {
+            carrito.splice(productoIndex, 1);
+        }
+
+        actualizarCarrito();
+    }
 }
 
 function calcularTotal() {
-    return carrito.reduce((total, producto) => total + producto.precio, 0);
+    return carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
 }
 
 function actualizarCarrito() {
@@ -75,17 +89,19 @@ function mostrarProductosEnCarrito() {
                 let item = document.createElement('div');
                 item.classList.add("carrito-item");
                 item.innerHTML = `
+                <li>
                     <div class="carrito-detalles">
                         <div class="carrito-lista">
-                            <p>${producto.nombre}</p>
-                            <p>$${producto.precio.toFixed(2)}</p>
-                        </div>
-                        <div>
+                            <p class="carrito-nombre">${producto.nombre}</p>
+                            <p class="carrito-precio">$${producto.precio.toFixed(2)}</p>
+                            <p class="carrito-cantidad">Cantidad: ${producto.cantidad}</p>
                             <button class="boton-eliminar" data-id="${producto.id}">✖️</button>
                         </div>
                     </div>
+                </li>
                 `;
                 carritoContainer.appendChild(item);
+
                 // Agregar el evento de eliminar al botón
                 let botonEliminar = item.querySelector('.boton-eliminar');
                 botonEliminar.addEventListener('click', () => {
