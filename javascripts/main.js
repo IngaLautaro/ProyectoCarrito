@@ -39,6 +39,33 @@ let productos = [
     }
 ];
 
+const contenedorProductos = document.querySelector("#productos");
+
+if (contenedorProductos) {
+
+    productos.forEach((producto) => {
+        let div = document.createElement("div");
+        div.classList.add("tarjeta-producto");
+        div.innerHTML = `
+            <img src=${producto.imagen} alt="Imagen del Producto" class="tarjeta-imagen">
+            <div class="tarjeta-info">
+                <h3 class="tarjeta-nombre">${producto.nombre}</h3>
+                <p class="tarjeta-precio">$${producto.precio}</p>
+            </div>
+        `;
+
+        let button = document.createElement("button");
+        button.classList.add("tarjeta-boton");
+        button.innerText = "Comprar";
+
+        button.addEventListener("click", () => agregarAlCarrito(producto.id));
+
+        div.querySelector(".tarjeta-info").appendChild(button);
+        contenedorProductos.appendChild(div);
+    });
+}
+
+
 function tostify (){
     Toastify({
         text: "Producto Agregado!",
@@ -60,10 +87,8 @@ function agregarAlCarrito(productoId) {
     if (producto) {
         let itemEnCarrito = carrito.find(item => item.id === producto.id);
         if (itemEnCarrito) {
-            // Si el producto ya está en el carrito, incrementar la cantidad
             itemEnCarrito.cantidad++;
         } else {
-            // Si no está, agregar el producto con cantidad 1
             carrito.push({...producto, cantidad: 1});
         }
         tostify ()
@@ -144,13 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarProductosEnCarrito(); 
     }
 
-    let botonesComprar = document.querySelectorAll(".tarjeta-boton");
-    botonesComprar.forEach((boton, index) => {
-        boton.addEventListener('click', () => {
-            agregarAlCarrito(productos[index].id);
-        });
-    });
-    
     let botonVaciarCarrito = document.getElementById("vaciar-carrito");
     if (botonVaciarCarrito) {
         botonVaciarCarrito.addEventListener("click", () => {
@@ -159,4 +177,4 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarProductosEnCarrito();
         });
     }
-});
+});   

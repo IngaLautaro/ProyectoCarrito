@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "nombre": "IPHONE 12",
+        "precio": 1100000.00,
+        "imagen": "../img/destacados/iphone-12.png"
+    },
+    {
+        "id": 2,
+        "nombre": "Iphone 13 Pro Max",
+        "precio": 1200000.00,
+        "imagen": "../img/destacados/iphone-13promax.png"
+    },
+    {
+        "id": 3,
+        "nombre": "Motorola Edge 40",
+        "precio": 800000.00,
+        "imagen": "../img/destacados/moto-edge40.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Motorola G23",
+        "precio": 230000.00,
+        "imagen": "../img/destacados/moto-g23.png"
+    },
+    {
+        "id": 5,
+        "nombre": "Samsung A23",
+        "precio": 450000.00,
+        "imagen": "../img/destacados/samsung-A23.png"
+    },
+    {
+        "id": 6,
+        "nombre": "Samsung A54",
+        "precio": 350000.00,
+        "imagen": "../img/destacados/samsung-a54.png"
+    }
+]
+
